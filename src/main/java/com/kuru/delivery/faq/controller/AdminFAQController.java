@@ -22,17 +22,20 @@ import com.kuru.delivery.faq.service.FAQService;
 import com.kuru.delivery.user.repository.UserRepository;
 
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/api/admin/faqs")
 @PreAuthorize("hasRole('ADMIN')")
-@RequiredArgsConstructor
 public class AdminFAQController {
 
-    private final FAQService faqService;
+    private FAQService faqService;
 
-    private final UserRepository userRepository;
+    private UserRepository userRepository;
+
+    public AdminFAQController(FAQService faqService, UserRepository userRepository) {
+        this.faqService = faqService;
+        this.userRepository = userRepository;
+    }
 
     // Get all FAQs (including inactive)
     @GetMapping

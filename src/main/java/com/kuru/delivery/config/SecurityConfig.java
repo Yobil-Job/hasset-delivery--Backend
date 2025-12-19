@@ -57,11 +57,15 @@ public class SecurityConfig {
                             "/api/orders/*/eta",
                             "/ws-location/**",
                             "/api/payments/webhook",
-                            "/api/faqs"
+                            "/api/faqs",
+                            // Swagger / OpenAPI endpoints should be public
+                            "/v3/api-docs/**",
+                            "/swagger-ui.html",
+                            "/swagger-ui/**",
+                            "/swagger-ui/index.html",
+                            "/scalar/**"
                     ).permitAll()
                     .requestMatchers("/h2-console/**").hasRole("ADMIN")
-                    .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html", "/scalar/**")
-                        .hasRole("ADMIN")
                     .requestMatchers("/api/admin/**").hasRole("ADMIN")
                     .anyRequest().authenticated()
             )
@@ -81,8 +85,8 @@ public class SecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+        return new BCryptPasswordEncoder(); 
+    } 
 
     @Bean
     public AuthenticationProvider authenticationProvider() {

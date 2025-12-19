@@ -10,14 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.kuru.delivery.faq.dto.FAQResponse;
 import com.kuru.delivery.faq.service.FAQService;
 
-import lombok.RequiredArgsConstructor;
-
 @RestController
 @RequestMapping("/api/faqs")
-@RequiredArgsConstructor
 public class FAQController {
 
-    private final FAQService faqService;
+    private FAQService faqService;
+
+    public FAQController(FAQService faqService) {
+        this.faqService = faqService;
+    }
     
     // Public endpoint - Get all active FAQs
     @GetMapping

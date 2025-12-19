@@ -12,13 +12,15 @@ import com.kuru.delivery.faq.model.FAQ;
 import com.kuru.delivery.faq.repository.FAQRepository;
 
 import jakarta.persistence.EntityNotFoundException;
-import lombok.RequiredArgsConstructor;
 
 @Service
-@RequiredArgsConstructor
 public class FAQService {
 
-    private final FAQRepository faqRepository;
+    private FAQRepository faqRepository;
+
+    public FAQService(FAQRepository faqRepository) {
+        this.faqRepository = faqRepository;
+    }
     
     // Get all active FAQs (for public customer UI)
     @Transactional(readOnly = true)
