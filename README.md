@@ -30,7 +30,7 @@ This API powers a full delivery platform — customers place and pay for orders,
 
 ## Architecture
 
-![System Architecture](./architecture.png)
+![System Architecture](./archtecture.png)
 
 The system is built across four clean layers:
 
